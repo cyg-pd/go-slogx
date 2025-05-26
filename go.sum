@@ -1,7 +1,7 @@
 github.com/cyg-pd/go-config v0.0.1 h1:fUTTyfgoMqmRisJLTtzfCI1m9E2KODwg5LO5Cv1Ybps=
 github.com/cyg-pd/go-config v0.0.1/go.mod h1:Xny0+ZUal3Pj3fbqGW7uoy1q2bN1qTKoy4oY+NeLQqo=
-github.com/cyg-pd/go-otelx v0.0.1 h1:IHjwjLTYYs0PCnWwxuX+W8IPlMADEhre10JMSxIzFkA=
-github.com/cyg-pd/go-otelx v0.0.1/go.mod h1:+i1YmqGJCswm30PBIlOi7uASiIqfDluFHo3aEWXQ8/8=
+github.com/cyg-pd/go-otelx v0.0.3 h1:P5P/CB450wdir4CrHxzKSp6JuitDNMN5MeqRhZtbLwc=
+github.com/cyg-pd/go-otelx v0.0.3/go.mod h1:MrZsAqJWBDrxSERoEXGip3C8utTxnaJAWh/59E8h9w4=
 github.com/cyg-pd/go-reflectx v0.0.1 h1:I7I+pyXlRXWA9Qv5ABcgVr6Fafx1mmG5T7TJVqwqcms=
 github.com/cyg-pd/go-reflectx v0.0.1/go.mod h1:Bgg/7cxCK2k3Rd5004bfvGBrZr7UieKiiNgpNxrUGNE=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

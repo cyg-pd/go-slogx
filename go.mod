@@ -4,7 +4,7 @@ go 1.24
 
 require (
 	github.com/cyg-pd/go-config v0.0.1
-	github.com/cyg-pd/go-otelx v0.0.1
+	github.com/cyg-pd/go-otelx v0.0.3
 	github.com/remychantenay/slog-otel v1.3.4
 	go.opentelemetry.io/contrib/bridges/otelslog v0.11.0
 )
