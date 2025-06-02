@@ -14,12 +14,13 @@ func WithLevel(lvl slog.Leveler) option {
 	return optionFunc(func(c *Config) { c.Log.Level = lvl.Level().String() })
 }
 
-func WithDriver(driver string) option {
-	return optionFunc(func(c *Config) { c.Log.Driver = driver })
+func WithSource(b bool) option {
+	return optionFunc(func(c *Config) { c.Log.Source = b })
 }
 
-func WithDriverOptions(option any) option {
+func WithDriver(driver string, option any) option {
 	return optionFunc(func(c *Config) {
+		c.Log.Driver = driver
 		if b, err := json.Marshal(option); err == nil {
 			c.Log.Options = string(b)
 		}

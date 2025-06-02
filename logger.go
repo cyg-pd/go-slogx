@@ -2,21 +2,12 @@ package slogx
 
 import (
 	"encoding/json"
-	"flag"
 	"log/slog"
 	"strings"
 
-	"github.com/cyg-pd/go-config"
 	"github.com/cyg-pd/go-slogx/driver"
 	slogotel "github.com/remychantenay/slog-otel"
 )
-
-func init() {
-	flag.String("log.driver", "stdout", "Log driver")
-	flag.String("log.level", "info", "Log level (debug, info, warn, error)")
-	flag.String("log.opts", "{}", "Log options (json)")
-	flag.Bool("log.source", false, "Log source")
-}
 
 type Config struct {
 	Log struct {
@@ -32,8 +23,6 @@ func New(opts ...option) *slog.Logger {
 	conf.Log.Driver = "stdout"
 	conf.Log.Level = "info"
 	conf.Log.Options = "{}"
-
-	_ = config.Unmarshal(&conf)
 
 	for _, opt := range opts {
 		opt.apply(&conf)
