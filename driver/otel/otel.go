@@ -9,7 +9,9 @@ import (
 )
 
 func init() {
-	driver.Register("otel", func(_ *slog.HandlerOptions, _ map[string]any) slog.Handler {
-		return otelslog.NewHandler(otelx.ServiceName())
-	})
+	driver.Register("otel", New)
+}
+
+func New(_ *slog.HandlerOptions, _ map[string]any) slog.Handler {
+	return otelslog.NewHandler(otelx.ServiceName())
 }

@@ -6,34 +6,34 @@ import (
 	"strings"
 
 	"github.com/cyg-pd/go-slogx/driver"
+	_ "github.com/cyg-pd/go-slogx/driver/json"
+	_ "github.com/cyg-pd/go-slogx/driver/text"
 	slogotel "github.com/remychantenay/slog-otel"
 )
 
-type Config struct {
-	Log struct {
-		Driver  string `mapstructure:"driver"`
-		Level   string `mapstructure:"level"`
-		Source  bool   `mapstructure:"source"`
-		Options string `mapstructure:"opts"`
-	} `mapstructure:"log"`
+type config struct {
+	Driver  string
+	Level   string
+	Source  bool
+	Options string
 }
 
 func New(opts ...option) *slog.Logger {
-	var conf Config
-	conf.Log.Driver = "stdout"
-	conf.Log.Level = "info"
-	conf.Log.Options = "{}"
+	var conf config
+	conf.Driver = "text"
+	conf.Level = "info"
+	conf.Options = "{}"
 
 	for _, opt := range opts {
 		opt.apply(&conf)
 	}
 
 	driverOpts := map[string]any{}
-	_ = json.Unmarshal([]byte(conf.Log.Options), &driverOpts)
+	_ = json.Unmarshal([]byte(conf.Options), &driverOpts)
 
-	h := driver.Get(conf.Log.Driver, &slog.HandlerOptions{
-		AddSource: conf.Log.Source,
-		Level:     toLevel(conf.Log.Level),
+	h := driver.Get(conf.Driver, &slog.HandlerOptions{
+		AddSource: conf.Source,
+		Level:     toLevel(conf.Level),
 	}, driverOpts)
 
 	h = slogotel.OtelHandler{Next: h}

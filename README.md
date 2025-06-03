@@ -34,12 +34,10 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/cyg-pd/go-config"
 	"github.com/cyg-pd/go-slogx"
 )
 
 func init() {
-	config.Parse()
 	slog.SetDefault(slogx.New())
 }
 
@@ -57,7 +55,6 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/cyg-pd/go-config"
 	"github.com/cyg-pd/go-otelx"
 	_ "github.com/cyg-pd/go-otelx/autoconf"
 	"github.com/cyg-pd/go-slogx"
@@ -66,7 +63,6 @@ import (
 var tracer = otelx.Tracer()
 
 func init() {
-	config.Parse()
 	slog.SetDefault(slogx.New())
 }
 
@@ -89,7 +85,6 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/cyg-pd/go-config"
 	"github.com/cyg-pd/go-otelx"
 	_ "github.com/cyg-pd/go-otelx/autoconf" // auto setup opentelemetry sdk with environment variable
 	"github.com/cyg-pd/go-slogx"
@@ -101,11 +96,9 @@ var tracer = otelx.Tracer()
 // $ export OTEL_METRICS_EXPORTER=none
 // $ export OTEL_TRACES_EXPORTER=none
 // $ export OTEL_LOGS_EXPORTER=console
-// $ go run main.go --log.driver=otel
 
 func init() {
-	config.Parse()
-	slog.SetDefault(slogx.New())
+	slog.SetDefault(slogx.New(slogx.WithDriver("otel", nil)))
 }
 
 func main() {

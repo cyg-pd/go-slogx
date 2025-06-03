@@ -5,24 +5,28 @@ import (
 	"log/slog"
 )
 
-type option interface{ apply(*Config) }
-type optionFunc func(*Config)
+type option interface{ apply(*config) }
+type optionFunc func(*config)
 
-func (fn optionFunc) apply(cfg *Config) { fn(cfg) }
+func (fn optionFunc) apply(cfg *config) { fn(cfg) }
 
-func WithLevel(lvl slog.Leveler) option {
-	return optionFunc(func(c *Config) { c.Log.Level = lvl.Level().String() })
+func WithLevel(lvl string) option {
+	return optionFunc(func(c *config) { c.Level = lvl })
+}
+
+func WithSlogLevel(lvl slog.Leveler) option {
+	return optionFunc(func(c *config) { c.Level = lvl.Level().String() })
 }
 
 func WithSource(b bool) option {
-	return optionFunc(func(c *Config) { c.Log.Source = b })
+	return optionFunc(func(c *config) { c.Source = b })
 }
 
 func WithDriver(driver string, option any) option {
-	return optionFunc(func(c *Config) {
-		c.Log.Driver = driver
+	return optionFunc(func(c *config) {
+		c.Driver = driver
 		if b, err := json.Marshal(option); err == nil {
-			c.Log.Options = string(b)
+			c.Options = string(b)
 		}
 	})
 }
