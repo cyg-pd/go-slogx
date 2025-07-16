@@ -16,6 +16,9 @@ func init() {
 func New(opts *slog.HandlerOptions, _ map[string]any) slog.Handler {
 	w := os.Stdout
 	return tint.NewHandler(w, &tint.Options{
-		NoColor: !isatty.IsTerminal(w.Fd()),
+		AddSource:   opts.AddSource,
+		Level:       opts.Level,
+		ReplaceAttr: opts.ReplaceAttr,
+		NoColor:     !isatty.IsTerminal(w.Fd()),
 	})
 }
