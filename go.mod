@@ -6,7 +6,7 @@ require (
 	github.com/cyg-pd/go-otelx v0.0.6
 	github.com/lmittmann/tint v1.1.2
 	github.com/mattn/go-isatty v0.0.20
-	github.com/remychantenay/slog-otel v1.3.4
+	github.com/remychantenay/slog-otel v1.3.5
 	go.opentelemetry.io/contrib/bridges/otelslog v0.14.0
 )
 
