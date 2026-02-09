@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	github.com/cyg-pd/go-otelx v0.0.6
-	github.com/lmittmann/tint v1.1.2
+	github.com/lmittmann/tint v1.1.3
 	github.com/mattn/go-isatty v0.0.20
 	github.com/remychantenay/slog-otel v1.3.4
 	go.opentelemetry.io/contrib/bridges/otelslog v0.14.0
